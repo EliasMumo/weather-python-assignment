@@ -1,0 +1,27 @@
+{% extends 'weather/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Check Weather</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button "Get Weather" button_type="submit" button_class="btn-primary" %}
+                </form>
+
+                {% if weather_data %}
+                    <div class="mt-4">
+                        <h3>Weather in {{ weather_data.city }}</h3>
+                        <p>Temperature: {{ weather_data.temperature }}°C</p>
+                        <p>Wind Speed: {{ weather_data.windspeed }} km/h</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

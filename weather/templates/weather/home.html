@@ -1,0 +1,13 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Weather App</h1>
+    <p class="lead">Get accurate weather information for any city!</p>
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" href="{% url 'weather:weather' %}">Check Weather</a>
+    {% else %}
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Login to Check Weather</a>
+    {% endif %}
+</div>
+{% endblock %} 
